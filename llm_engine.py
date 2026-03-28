@@ -7,16 +7,19 @@ from google.genai.errors import ServerError, ClientError
 import streamlit as st
 
 
-api_key = None
-api_key = os.getenv("GEMINI_API_KEY")
+def get_client():
+    api_key = os.getenv("GEMINI_API_KEY") or st.secrets.get("GEMINI_API_KEY")
+    if not api_key:
+        return None 
 
-if not api_key:
-    api_key = st.secrets.get("GEMINI_API_KEY")
-
-client = genai.Client(api_key=api_key)
+    return genai.Client(api_key=api_key)
 
 
 def analyze_claim(prompt):
+    client = get_client()
+
+    if client is None:
+        return fallback_response()
 
     try:
         response = client.models.generate_content(
