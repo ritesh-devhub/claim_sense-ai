@@ -172,8 +172,6 @@ graph LR
     C --> D{🎯 Confidence Check}
     D -->|Low| B
     D -->|High| E[📊 Final Output]
-    style A fill:#e1f5ff
-    style E fill:#d4edda
 ```
 
 </div>
