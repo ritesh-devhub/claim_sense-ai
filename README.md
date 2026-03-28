@@ -139,8 +139,7 @@ streamlit run app.py
 
 Then open your browser to `http://localhost:8501`
 
-![Dashboard Preview](https://via.placeholder.com/800x400/4A90E2/FFFFFF?text=ClaimSense+Dashboard+Preview)
-*Replace with actual screenshot of your Streamlit app*
+![Dashboard Preview](assets/dashboard.png)
 
 ---
 
