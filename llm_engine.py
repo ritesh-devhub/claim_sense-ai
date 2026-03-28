@@ -4,10 +4,16 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from google.genai.errors import ServerError, ClientError
+import streamlit as st
 
-load_dotenv()
 
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+api_key = None
+api_key = os.getenv("GEMINI_API_KEY")
+
+if not api_key:
+    api_key = st.secrets.get("GEMINI_API_KEY")
+
+client = genai.Client(api_key=api_key)
 
 
 def analyze_claim(prompt):
